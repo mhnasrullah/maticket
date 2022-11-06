@@ -36,7 +36,7 @@ export const ArtistJumbo = (
                 )}
             </div>
             <div className='-mt-12 md:-mt-16 lg:-mt-24 px-4 md:px-8 lg:px-16 border-[1px] border-[gray] rounded-sm'>
-                <div className='relative w-24 md:w-32 md:h-32 lg:w-48 lg:h-48 h-24 rounded-full border-4 border-white'>
+                <div className='relative w-24 md:w-32 md:h-32 lg:w-48 lg:h-48 h-24 rounded-full border-4 lg:border-8 border-white'>
                     <Image src={image} fill alt={name} className="object-cover object-center rounded-full"/>
                 </div>
                 <div>
@@ -53,14 +53,14 @@ export const ArtistJumbo = (
                             <Image src={"/assets/icons/share.svg"} fill alt='share'/>
                         </button>
                     </div>
-                    <div className='flex flex-col lg:flex-row lg:items-center lg:mt-4 lg:space-x-8'>
+                    <div className='flex flex-col lg:flex-row lg:items-center lg:mt-4 lg:space-x-16'>
                         <div className='flex space-x-2 mt-1 items-center'>
                             <div className='relative w-6 lg:w-12'>
                                 <Image alt='USA' src={'/assets/images/flag.png'} width={46} height={36} />
                             </div>
                             <p className='text-sm md:text-base'>United States</p>
                         </div>
-                        <div className='mt-4 lg:mt-0 flex space-x-3 items-center'>
+                        <div className='mt-4 lg:mt-0 flex space-x-3 lg:space-x-6 items-center'>
                             <a href="/" >
                                 <div className='relative w-8'>
                                     <Image src={"/assets/icons/instagramout.svg"} width={50} height={50} alt="instagram"/>
@@ -81,7 +81,7 @@ export const ArtistJumbo = (
                             </button>
                         </div>
                     </div>
-                    <div className='flex space-x-2 mt-4 lg:mt-6'>
+                    <div className='flex space-x-2 mt-4 lg:mt-6 lg:space-x-16'>
                         <p className='text-xs lg:text-base'>Joined : 01-01-2022</p>
                         <p className='text-xs lg:text-base'>hi@meghantrainor.com</p>
                     </div>

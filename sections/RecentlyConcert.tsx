@@ -6,12 +6,12 @@ import { RecentlyCardConcert } from '../components/Card'
 import Text from '../components/Text'
 import data from '../data/recent.json'
 
-const GridLayout = styled.div`
-`
-
 export default function RecentlyConcert() {
   return (
     <Box className='py-16 lg:py-24'>
+        <div>
+            
+        </div>
         <div className='flex justify-between items-end mb-8 lg:mb-12'>
             <Text
             className='w-fit'

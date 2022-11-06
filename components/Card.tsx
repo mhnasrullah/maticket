@@ -1,6 +1,64 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import styled from 'styled-components'
+
+interface RecentProps{
+    time : string,
+    artist : string
+}
+
+const BoxRecent = styled.div`
+    background-image : url("/assets/images/bgRecent.jpg")
+`
+
+export const RecentCard = ({time,artist} : RecentProps) => {
+    return (
+        <BoxRecent className='w-full h-72 flex flex-col justify-between'>
+            <div className='bg-[#ffffff55] w-full py-4 px-8 text-white'>
+                <p>{artist} live</p>
+            </div>
+            <div className='px-8 pb-8'>
+                <div className='bg-[#ffffff55] flex items-center space-x-2 w-full py-2 px-4 text-white'>
+                    <div className='relative w-8'>
+                        <Image src={'/assets/icons/time.svg'} width={50} height={50} alt="time"/>
+                    </div>
+                    <div>
+                        <p className='text-sm'>Fri - Sun</p>
+                        <p className='font-medium'>{time}</p>
+                    </div>
+                </div>
+            </div>
+        </BoxRecent>
+    )
+}
+
+interface TicketCardProps{
+    image : string,
+    name : string,
+    artist : string,
+    price : string,
+    href : string,
+    sold? : number
+}
+
+export const TicketCard = ({artist,image,name,price,sold,href} : TicketCardProps) => {
+    return (
+        <Link href={href}>
+            <div className="relative">
+                <div className="absolute bg-white px-2 py-1 rounded-full text-sm text-blue top-4 right-4 z-20">{sold} SOLD</div>
+                <div className='p-2 pb-6 border-gray rounded-lg border-2'>
+                    <div className='relative w-full h-64 lg:h-72'>
+                        <Image src={image} fill className="object-cover object-center rounded-md" alt={name}/>
+                    </div>
+                    <h1 className='mt-4 font-semibold text-lg lg:text-xl'>{name}</h1>
+                    <p className='text-[gray] h-10 mb-4 overflow-hidden text-sm md:text-base'>{artist}</p>
+                    <p className="text-blue font-semibold">{price} MATIC</p>
+                </div>
+            </div>
+        </Link>
+    )
+}
 
 interface SponsoredProps{
     image : string,
