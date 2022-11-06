@@ -2,6 +2,48 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
+import Timeline from './Timeline'
+
+export type dataTimeline = {
+    date : string,
+    title : string,
+    description : string
+}
+
+interface TimelineProps{
+    title : string,
+    data : dataTimeline[],
+    href : string
+}
+
+const dataTime = [1,2,3,4,5,6,7,8,9];
+
+export const TimelineCard = ({
+    title,
+    data,
+    href
+} : TimelineProps) => {
+    return (
+        <div className='bg-white rounded-sm border-[gray] border-[1px] py-6 px-4'>
+            <h1 className='mb-4 font-medium'>{title}</h1>
+            <div className='mb-6'>
+                {data.map((e,i)=>(
+                    <Timeline
+                    key={i}
+                    title={e.title}
+                    description={e.description}
+                    date={e.date}
+                    />
+                ))}
+            </div>
+            <Link href={href} className="text-blue font-semibold" >View More
+                <div className='relative w-3 h-3 inline-block ml-3'>
+                    <Image src={"/assets/icons/more.svg"} alt="more" fill/>
+                </div>
+            </Link>
+        </div>
+    )
+}
 
 interface RecentProps{
     time : string,

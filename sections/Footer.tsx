@@ -7,7 +7,7 @@ import Logo from '../components/Logo'
 export default function Footer() {
   return (
     <>
-    <footer className='py-16 lg:py-24'>
+    <footer className='py-16 lg:py-24 bg-white'>
         <Box className='space-y-12 md:flex md:space-y-0 md:justify-between'>
             <div className='space-y-4'>
                 <div className='w-fit'>
