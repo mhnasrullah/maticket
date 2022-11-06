@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <>
     <footer className='py-16 lg:py-24'>
-        <Box className='space-y-12'>
+        <Box className='space-y-12 md:flex md:space-y-0 md:justify-between'>
             <div className='space-y-4'>
                 <div className='w-fit'>
                     <Logo/>
@@ -32,19 +32,19 @@ export default function Footer() {
                     +1 888 888 123
                 </a>
             </div>
-            <div className="space-y-2 flex flex-col">
+            <div className="space-y-2 md:space-y-4 flex flex-col">
                 <h2 className='font-semibold'>Company</h2>
                 <Link href="/">Event</Link>
                 <Link href="/">Band/Artist</Link>
             </div>
-            <div className="space-y-2 flex flex-col">
+            <div className="space-y-2 md:space-y-4 flex flex-col">
                 <h2 className='font-semibold'>Help</h2>
                 <Link href="/">Team</Link>
                 <Link href="/">FAQ</Link>
                 <Link href="/">Privacy Policy</Link>
                 <Link href="/">ToS</Link>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 md:space-y-4">
                 <h2 className='font-semibold'>Social Media</h2>
                 <div className="mt-1 flex space-x-4">
                     <a href="/">
@@ -66,7 +66,7 @@ export default function Footer() {
             </div>
         </Box>
     </footer>
-    <div className="py-8 lg:py-16 bg-blue">
+    <div className="py-8 bg-blue">
         <p className="text-white text-center">Hak Cipta 2022 © MATICKET</p>
     </div>
     </>
