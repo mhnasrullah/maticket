@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import Button from '../components/Button'
 import Text from '../components/Text'
 
-const HideScrollbar = styled.div`
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-`
+// const HideScrollbar = styled.div`
+//     // -ms-overflow-style: none;
+//     // scrollbar-width: none;
+// `
 
 export const GenreJumbo = () => {
     return (
@@ -19,7 +19,7 @@ export const GenreJumbo = () => {
                 blackText='Concerts by'
                 blueText='Genre'
                 type='primary'/>
-                <HideScrollbar className='flex space-x-4 overflow-x-scroll md:h-fit'>
+                <div className='flex space-x-4 overflow-x-scroll md:h-fit lg:pb-2'>
                     {data.map((e,i)=>(
                         <Button
                         key = {i}
@@ -27,7 +27,7 @@ export const GenreJumbo = () => {
                         style='secondary'
                         >{e.name}</Button>
                     ))}
-                </HideScrollbar>
+                </div>
             </div>
         </Box>
     )

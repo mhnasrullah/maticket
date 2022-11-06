@@ -13,7 +13,7 @@ export const Text = ({type,blackText,blueText,className,underline,center} : Text
     if(type === 'primary'){
         console.log("ini")
         return(
-            <h1 className={`text-black font-semibold text-2xl ${center ? 'text-center mx-auto' : ' '} ${underline ? 'pb-1 border-b-2 border-b-gray' : ' '} ${className ? className :' '}`}>{blackText} <span className='text-blue'>{blueText}</span></h1>
+            <h1 className={`text-black font-semibold text-2xl lg:text-3xl ${center ? 'text-center mx-auto' : ' '} ${underline ? 'pb-1 border-b-2 border-b-gray' : ' '} ${className ? className :' '}`}>{blackText} <span className='text-blue'>{blueText}</span></h1>
         )
     }
     return <></>

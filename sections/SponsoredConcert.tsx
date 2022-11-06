@@ -16,7 +16,7 @@ enum HoverSet {
 
 export default function SponsoredConcert() {
 
-    const [hover,setHover] = useState(HoverSet)
+    const [hover,setHover] = useState<HoverSet>(HoverSet.none)
 
   return (
     <div>
@@ -24,31 +24,35 @@ export default function SponsoredConcert() {
             <Text
             center
             type='primary'
-            className='mb-6 mt-12 w-fit'
+            className='mb-8 mt-16 lg:mb-12 lg:mt-24 w-fit'
             blackText='Sponsored'
             blueText='Concert'
             underline/>
+
             <Swiper
             className='relative'
             modules={[Navigation]}
+            breakpoints={{
+                0 : {
+                    spaceBetween : 10,
+                    slidesPerView : 1
+                },
+                756 : {
+                    spaceBetween : 20,
+                    slidesPerView : 2
+                },
+                992 : {
+                    spaceBetween : 40,
+                    slidesPerView : 3
+                },
+                
+            }}
             navigation = {{
                 nextEl : ".nextEl",
                 prevEl : ".prevEl"
             }}
-            spaceBetween={10}
-            slidesPerView={1}
             >
-                <SwiperSlide
-                className='px-4'>
-                    <SponsoredCardConcert
-                    image='/assets/images/jumbo.jpg'
-                    altImage='test'
-                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
-                    href='/'
-                    name='BTS in Las Vegas'/>
-                </SwiperSlide>
-                <SwiperSlide
-                className='px-4'>
+                <SwiperSlide>
                     <SponsoredCardConcert
                     image='/assets/images/jumbo.jpg'
                     altImage='test'
@@ -64,14 +68,52 @@ export default function SponsoredConcert() {
                     href='/'
                     name='BTS in Las Vegas'/>
                 </SwiperSlide>
-                <div className='absolute h-full width-10 z-10 flex items-center top-0 left-0'>
-                    <button className='prevEl'>
-                        
+                <SwiperSlide>
+                    <SponsoredCardConcert
+                    image='/assets/images/jumbo.jpg'
+                    altImage='test'
+                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
+                    href='/'
+                    name='BTS in Las Vegas'/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <SponsoredCardConcert
+                    image='/assets/images/jumbo.jpg'
+                    altImage='test'
+                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
+                    href='/'
+                    name='BTS in Las Vegas'/>
+                </SwiperSlide>
+                <div className='absolute h-full width-10 z-10 flex items-center top-0 left-0 ml-4'>
+                    <button
+                    className='prevEl'
+                    onMouseEnter={
+                        ()=>setHover(HoverSet.left)
+                    } onMouseLeave={
+                        ()=>setHover(HoverSet.none)
+                    }>
+                        {hover === HoverSet.left ?
+                        (
+                            <Image src={'/assets/icons/leftActiveArr.svg'} alt="leftArr" width={50} height={50} />
+                        ) : (
+                            <Image src={'/assets/icons/rightNonActiveArr.svg'} alt="leftArr" width={50} height={50} className="rotate-180"/>
+                        )}
                     </button>
                 </div>
-                <div className='absolute h-full width-10 z-10 flex items-center top-0 right-0'>
-                    <button className="nextEl">
-                        <Image src={'/assets/icons/rightNonActiveArr.svg'} alt="leftArr" width={50} height={50} />
+                <div className='absolute h-full width-10 z-10 flex items-center top-0 right-0 mr-4'>
+                    <button
+                    onMouseEnter={
+                        ()=>setHover(HoverSet.right)
+                    }
+                    onMouseLeave={
+                        ()=>setHover(HoverSet.none)
+                    }
+                    className="nextEl">
+                        {hover === HoverSet.right ? (
+                            <Image src={'/assets/icons/leftActiveArr.svg'} alt="leftArr" width={50} height={50} className="rotate-180" />
+                        ) : (
+                            <Image src={'/assets/icons/rightNonActiveArr.svg'} alt="leftArr" width={50} height={50} />
+                        )}
                     </button>
                 </div>
             </Swiper>
