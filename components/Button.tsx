@@ -17,7 +17,7 @@ const Button : React.FC<ButtonProps> = ({type,style,className,children,...props}
     if(style === 'primary'){
         styled = `py-4 px-10 bg-blue font-medium rounded-full ${className ? className : ' '}`
     }else if(style === 'secondary'){
-        styled = `px-4 py-2 border-2 border-blue text-blue rounded-full ${className ? className : ' '}`
+        styled = `px-4 py-2 border-2 border-blue text-blue rounded-full text-sm md:text-base ${className ? className : ' '}`
     }
 
 

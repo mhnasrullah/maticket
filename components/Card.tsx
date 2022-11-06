@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -33,21 +33,29 @@ interface RecentlyProps{
 }
 
 export const RecentlyCardConcert = ({altImage,href,image,name,price,singer} : RecentlyProps) => {
+    
+    const [liked,setLiked] = useState<boolean>(false);
+
     return(
-        <Link href={href}>
-            <div className='p-2 pb-6 border-gray rounded-lg border-2 shadow-lg'>
-                <div className='relative w-full h-48'>
-                    <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
+        <div className='relative'>
+            <button className="absolute p-1 rounded-full top-4 right-4 z-20 bg-white" onClick={()=>console.log("clicked",name)}>
+                <Image src={'/assets/icons/Heart.svg'} width={20} height={20} alt="like"/>
+            </button>
+            <Link href={href}>
+                <div className='p-2 pb-6 border-gray rounded-lg border-2 shadow-lg relative'>
+                    <div className='relative w-full h-48'>
+                        <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
+                    </div>
+                    <h1 className='mt-2 font-semibold md:text-lg whitespace-nowrap overflow-hidden truncate'>{name}</h1>
+                    <div className='h-10 lg:text-sm lg:h-16 mt-2 overflow-y-auto w-full mb-2 text-[gray] text-xs'>
+                        {singer.map((e)=>(
+                            <p key={e}>{e}</p>
+                        ))}
+                    </div>
+                    <p className="text-blue font-semibold">{price} MATIC</p>
                 </div>
-                <h1 className='mt-2 font-semibold text-lg whitespace-nowrap overflow-hidden truncate'>{name}</h1>
-                <div className='h-16 mt-2 overflow-y-auto w-full mb-2 text-[gray] text-sm'>
-                    {singer.map((e)=>(
-                        <p key={e}>{e}</p>
-                    ))}
-                </div>
-                <p className="text-blue font-semibold">{price} MATIC</p>
-            </div>
-        </Link>
+            </Link>
+        </div>
     )
 }
 
