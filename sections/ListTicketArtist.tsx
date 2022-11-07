@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Dropdown from '../components/Dropdown'
 import { TicketCard } from '../components/Card'
+import Pagination from '../components/Pagination'
 
 const data = [1,2,3,4,5,6,7,8,9]
 
@@ -33,12 +34,10 @@ export default function ListTicketArtist() {
             ))}
         </div>
         {/* Pagination */}
-        <div className='flex justify-end'>
-          <div>
-            <button>
-
-            </button>
-          </div>
+        <div className='flex justify-end mt-6'>
+          <Pagination
+          active={1}
+          total={4}/>
         </div>
     </div>
   )
