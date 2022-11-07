@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box } from '../components/Box'
 import Button from '../components/Button'
+import Input from '../components/Input'
 
 export default function Subscribe() {
   return (
@@ -11,10 +12,11 @@ export default function Subscribe() {
                 <p className='text-white lg:text-xl lg:mt-4'>Register email to get the latest info about concerts in the world</p>
             </div>
             <div className='mt-8'>
-                <div className='bg-white rounded-full py-2 pl-4 pr-2 flex'>
-                    <input type="text" className='outline-none w-full' placeholder='Email...'/>
-                    <button className='py-2 px-4 bg-blue font-medium rounded-full text-white'>Subscribe</button>
-                </div>
+                <Input
+                type={'text'}
+                buttonType = 'text'
+                buttonContent='Subscribe'
+                placeholder='Email...'/>
             </div>
         </Box>
     </div>

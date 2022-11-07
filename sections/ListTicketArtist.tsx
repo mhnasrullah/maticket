@@ -37,7 +37,7 @@ export default function ListTicketArtist() {
         <div className='flex justify-end mt-6'>
           <Pagination
           active={1}
-          total={4}/>
+          total={8}/>
         </div>
     </div>
   )

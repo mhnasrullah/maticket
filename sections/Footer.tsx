@@ -23,13 +23,13 @@ export default function Footer() {
                     <div className='w-8 h-8 relative mr-2'>
                         <Image src={'/assets/icons/email.svg'} alt="whatsapp-icons" fill/>
                     </div>
-                    +1 888 888 123
+                    hello@maticket.com
                 </a>
                 <a href="/" className='flex items-center'>
                     <div className='w-8 h-8 relative mr-2'>
                         <Image src={'/assets/icons/map.svg'} alt="whatsapp-icons" fill/>
                     </div>
-                    +1 888 888 123
+                    A Tower No. 88
                 </a>
             </div>
             <div className="space-y-2 md:space-y-4 flex flex-col">
