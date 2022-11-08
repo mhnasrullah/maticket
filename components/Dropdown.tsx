@@ -65,7 +65,7 @@ export const DropdownNav = ({active,options} : NavDropdown) => {
                     <Image src={'/assets/icons/arrdown.svg'} fill alt='arrow'/>
                 </div>
             </button>
-            <div className={show ? 'w-full bg-white absolute top-16 left-0 max-h-52 overflow-y-auto' : 'hidden'}>
+            <div className={show ? 'z-10 w-full bg-white absolute top-16 left-0 max-h-52 overflow-y-auto' : 'hidden'}>
                 {options.map((e,i)=>(
                     <button key={i} className='flex items-center w-full hover:bg-l-gray py-2 justify-center'
                     onClick={()=>{
