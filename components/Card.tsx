@@ -107,13 +107,23 @@ interface SponsoredProps{
     altImage : string,
     name : string,
     desc : string,
-    href : string
+    href : string,
+    showPerSlideonLarge : number
 }
 
-export const SponsoredCardConcert = ({image,altImage,name,desc,href} : SponsoredProps) => {
+export const SponsoredCardConcert = ({image,altImage,name,desc,href,showPerSlideonLarge} : SponsoredProps) => {
+
+    let heightImage : string | undefined;
+
+    if(showPerSlideonLarge == 3){
+        heightImage = 'h-96'
+    }else if(showPerSlideonLarge == 4){
+        heightImage = 'h-80'
+    }
+
     return (
         <div className='p-2 pb-6 border-gray rounded-lg border-2 text-center'>
-            <div className='relative w-full h-96'>
+            <div className={`relative w-full ${heightImage}`}>
                 <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
             </div>
             <h1 className='mt-6 font-semibold text-3xl'>{name}</h1>

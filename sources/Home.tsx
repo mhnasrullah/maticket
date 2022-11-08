@@ -24,7 +24,10 @@ export default function Home() {
         <Nav />
         <Jumbotron/>
         <GenreJumbo/>
-        <SponsoredConcert/>
+        <SponsoredConcert
+        center
+        blackText='Sponsored'
+        blueText='Concert'/>
         <RecentlyConcert/>
         <Faq/>
         <Subscribe/>

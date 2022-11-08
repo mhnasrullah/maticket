@@ -11,6 +11,15 @@ import InfoTicket from '../sections/InfoTicket'
 import TIcketInformation from '../sections/TIcketInformation'
 import Text from '../components/Text'
 import Button from '../components/Button'
+import Swiper, { SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper'
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import MoreFromArtist from '../sections/MoreFromArtist'
+import { TicketCard } from '../components/Card'
+import Footer from '../sections/Footer'
+
 const Related = ['World','Pop']
 
 export default function DetailTicket() {
@@ -60,8 +69,36 @@ export default function DetailTicket() {
                     <Button className='mr-2 mt-1' style='secondary' type='button' key={i}>{e}</Button>
                 ))}
             </div>
-        </div>
+          </div>
         </Box>
+
+
+        <MoreFromArtist/>
+
+      <div className='py-16 bg-l-gray mt-16'>
+        <Box>
+            <Text
+            blackText='Recommended'
+            blueText='Concerts'
+            type='primary'
+            className='w-fit'
+            underline/>
+
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mt-12'>
+              {[...Array(4)].map((e,i)=>(
+                <TicketCard
+                key={i}
+                artist='Juan Marley'
+                href='/ticket/1'
+                image='/assets/images/jumbo.jpg'
+                name='Jakarta Peace Concert'
+                price='10,00'/>
+              ))}
+            </div>
+        </Box>
+      </div>
+      <Footer/>
+
     </div>
   )
 }
