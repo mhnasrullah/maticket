@@ -24,7 +24,7 @@ export default function ListTicketArtist() {
             {data.map((e,i)=>(
                 <TicketCard
                 key={i}
-                href={"/"}
+                href={"/ticket/1"}
                 artist='Meghan Trainor'
                 image='/assets/images/jumbo.jpg'
                 price='320,00'

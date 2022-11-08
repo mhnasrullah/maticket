@@ -7,15 +7,16 @@ interface ButtonProps {
     children : ReactNode
     className? : string,
     onClick? : React.MouseEventHandler,
-    key? : number
+    key? : number,
+    classTextColor? : string
 }
 
-const Button : React.FC<ButtonProps> = ({type,style,className,children,...props}) => {
+const Button : React.FC<ButtonProps> = ({type,style,classTextColor,className,children,...props}) => {
 
     let styled : string = '';
 
     if(style === 'primary'){
-        styled = `py-4 px-10 bg-blue font-medium rounded-full ${className ? className : ' '}`
+        styled = `py-4 px-10 bg-blue font-medium ${classTextColor ? classTextColor : ' '} rounded-full ${className ? className : ' '}`
     }else if(style === 'secondary'){
         styled = `px-4 py-2 border-2 border-blue text-blue rounded-full text-sm md:text-base ${className ? className : ' '}`
     }

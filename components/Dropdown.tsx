@@ -92,3 +92,38 @@ export const DropdownNav = ({active,options} : NavDropdown) => {
         </div>
     )
 }
+
+interface OutlineProps{
+    active? : string
+    options : string[]
+}
+export const DropdownOutline = ({active,options} : OutlineProps) => {
+    
+    const [value,setValue] = useState(active ? active : options[0])
+    const [show,setShow] = useState(false);
+
+    return (
+        <div className='relative text-sm w-fit'>
+            <button
+            onClick={()=>{
+                setShow(!show)}}
+            className='py-2 px-2 border-blue border-2 w-fit rounded-lg flex items-center space-x-6 bg-white'>
+                <p className='font-medium min-w-[100px] lg:min-w-[180px] text-start'>{value}</p>
+                <div className='relative min-w-[12px] w-3'>
+                    <Image src={'/assets/icons/arrdown.svg'} width={30} height={30} alt="arrow down"/>
+                </div>
+            </button>
+            <div
+            className={show ? 'absolute w-full top-12 rounded-lg border-blue border-2 bg-white' : 'hidden'}>
+                {options.map((e,i)=>(
+                    <button
+                    onClick={()=>{
+                        setValue(e)}}
+                    key={i} className="w-full py-1 hover:bg-l-gray rounded-lg">
+                        <p className="font-medium">{e}</p>
+                    </button>
+                ))}
+            </div>
+        </div>
+    )
+}

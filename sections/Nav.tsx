@@ -10,7 +10,7 @@ export default function Nav() {
   const [show,setShow] = useState(false)
 
   return (
-    <Box className='relative bg-white'>
+    <Box className='relative bg-white shadow-xl'>
       <div className='pb-6 flex justify-between items-center md:space-x-6'>
         {/* LEFT */}
         <div className='flex items-center space-x-6'>
