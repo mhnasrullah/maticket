@@ -2,7 +2,7 @@ import React from 'react'
 import type {ReactNode} from 'react'
 import { Box } from './Box'
 
-type HeaderInfoProps = {
+interface HeaderInfoProps{
     children : ReactNode,
     className? : string
 }

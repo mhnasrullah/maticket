@@ -1,9 +1,5 @@
 import Link from "next/link"
-
-type BreadList = {
-    href? : string,
-    name : string
-}
+import {BreadList} from '../utils/type'
 
 interface Props{
     list : BreadList[]

@@ -3,6 +3,7 @@ import { Box } from '../components/Box'
 import Button from '../components/Button'
 import styled from 'styled-components'
 import Image from 'next/image'
+import {activeSection} from '../utils/enum'
 
 interface ArtistProps{
     data : {
@@ -11,13 +12,6 @@ interface ArtistProps{
         image : string,
         verified : boolean
     }
-
-}
-
-enum activeSection {
-    bio,
-    post,
-    allTicket
 }
 
 export const ArtistJumbo = (

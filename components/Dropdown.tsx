@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
+import {DropLangType} from '../utils/type'
 
 interface Props{
     options : string[],
@@ -31,11 +32,6 @@ export default function Dropdown({options,name} : Props) {
         </div>
     </div>
   )
-}
-
-export type DropLangType = {
-    name : string,
-    flag : string
 }
 
 interface NavDropdown{

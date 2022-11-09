@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-type BoxProps = {
+interface BoxProps {
     children : ReactNode,
     className? : string
 }

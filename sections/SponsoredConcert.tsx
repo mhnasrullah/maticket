@@ -7,12 +7,8 @@ import { Navigation } from 'swiper'
 import Image from 'next/image'
 import 'swiper/css';
 import 'swiper/css/navigation';
+import {HoverSetSwiper} from '../utils/enum'
 
-export enum HoverSetSwiper {
-    left,
-    right,
-    none
-}
 
 interface Props{
     showOnLarge? : number,

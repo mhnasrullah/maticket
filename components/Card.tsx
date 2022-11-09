@@ -3,12 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 import Timeline from './Timeline'
+import {dataTimeline} from '../utils/type'
 
-export type dataTimeline = {
-    date : string,
-    title : string,
-    description : string
-}
 
 interface TimelineProps{
     title : string,
