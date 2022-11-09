@@ -108,10 +108,10 @@ interface SponsoredProps{
     name : string,
     desc : string,
     href : string,
-    showPerSlideonLarge : number
+    showPerSlideonLarge? : number
 }
 
-export const SponsoredCardConcert = ({image,altImage,name,desc,href,showPerSlideonLarge} : SponsoredProps) => {
+export const SponsoredCardConcert = ({image,altImage,name,desc,href,showPerSlideonLarge = 3} : SponsoredProps) => {
 
     let heightImage : string | undefined;
 
