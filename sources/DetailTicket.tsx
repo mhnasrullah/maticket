@@ -87,8 +87,9 @@ export default function DetailTicket() {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mt-12'>
               {[...Array(4)].map((e,i)=>(
                 <TicketCard
+                type='like'
                 key={i}
-                artist='Juan Marley'
+                artist={['Juan Marley']}
                 href='/ticket/1'
                 image='/assets/images/jumbo.jpg'
                 name='Jakarta Peace Concert'

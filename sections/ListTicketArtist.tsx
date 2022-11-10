@@ -1,10 +1,7 @@
 import React from 'react'
-import Image from 'next/image'
 import Dropdown from '../components/Dropdown'
 import { TicketCard } from '../components/Card'
 import Pagination from '../components/Pagination'
-
-const data = [1,2,3,4,5,6,7,8,9]
 
 export default function ListTicketArtist() {
   return (
@@ -21,11 +18,12 @@ export default function ListTicketArtist() {
             options={["option1","option2","option3"]}/>
         </div>
         <div className='mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-x-6 lg:gap-y-4'>
-            {data.map((e,i)=>(
+            {[...Array(9)].map((e,i)=>(
                 <TicketCard
+                type='sold'
                 key={i}
                 href={"/ticket/1"}
-                artist='Meghan Trainor'
+                artist={['Meghan Trainor']}
                 image='/assets/images/jumbo.jpg'
                 price='320,00'
                 name='That Bass Tour'
@@ -33,7 +31,6 @@ export default function ListTicketArtist() {
                 />
             ))}
         </div>
-        {/* Pagination */}
         <div className='flex justify-end mt-6'>
           <Pagination
           active={1}

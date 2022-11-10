@@ -3,8 +3,8 @@ import { HeaderInfo } from '../components/Info'
 import Link from 'next/link'
 import Logo from '../components/Logo'
 import Nav from '../sections/Nav'
-import { RecentlyCardConcert, SponsoredCardConcert } from '../components/Card'
-import SponsoredConcert from '../sections/SponsoredConcert'
+import {  SponsoredCardConcert, TicketCard } from '../components/Card'
+import SponsoredConcert from '../sections/SliderContent'
 import RecentlyConcert from '../sections/RecentlyConcert'
 import { Box } from '../components/Box'
 import Text from '../components/Text'
@@ -42,14 +42,14 @@ export default function AllEvent() {
             />
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5 mt-12">
                 {[...Array(10)].map((e,i)=>(
-                    <RecentlyCardConcert
+                    <TicketCard
+                    type='like'
                     key={i}
-                    altImage='name'
                     href='/ticket/1'
                     image='/assets/images/jumbo.jpg'
                     name='Jakarta Peace Conncert'
                     price='10,00'
-                    singer={['Juan Marley']}/>
+                    artist={['Juan Marley']}/>
                 ))}
             </div>
             <div className='flex justify-center md:justify-end mt-6 lg:mt-12'>

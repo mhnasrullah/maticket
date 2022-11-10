@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Text from '../components/Text'
 import { Swiper,SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
-import { HoverSetSwiper } from './SponsoredConcert'
+import { HoverSetSwiper } from '../utils/enum'
 import Image from 'next/image'
 import { Box } from '../components/Box'
 import { TicketCard } from '../components/Card'
@@ -41,69 +41,19 @@ export default function MoreFromArtist() {
             prevEl : ".prevEl"
         }}
         >
-            <SwiperSlide>
-                <TicketCard
-                artist='Justin Beiber'
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Justice:Toronto'
-                price='10,00'
-                />
-            </SwiperSlide>
-            <SwiperSlide>
-                <TicketCard
-                artist='Justin Beiber'
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Justice:Toronto'
-                price='10,00'
-                />
-            </SwiperSlide>
-            <SwiperSlide>
-                <TicketCard
-                artist='Justin Beiber'
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Justice:Toronto'
-                price='10,00'
-                />
-            </SwiperSlide>
-            <SwiperSlide>
-                <TicketCard
-                artist='Justin Beiber'
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Justice:Toronto'
-                price='10,00'
-                />
-            </SwiperSlide>
-            <SwiperSlide>
-                <TicketCard
-                artist='Justin Beiber'
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Justice:Toronto'
-                price='10,00'
-                />
-            </SwiperSlide>
-            <SwiperSlide>
-                <TicketCard
-                artist='Justin Beiber'
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Justice:Toronto'
-                price='10,00'
-                />
-            </SwiperSlide>
-            <SwiperSlide>
-                <TicketCard
-                artist='Justin Beiber'
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Justice:Toronto'
-                price='10,00'
-                />
-            </SwiperSlide>
+            {[...Array(6)].map((e,i)=>(
+                <SwiperSlide key={i}>
+                    <TicketCard
+                    type='like'
+                    artist={['Justin Beiber']}
+                    href='/ticket/1'
+                    image='/assets/images/jumbo.jpg'
+                    name='Justice:Toronto'
+                    price='10,00'
+                    />
+                </SwiperSlide>
+            ))}
+            
             
             <div className='absolute h-full width-10 z-10 flex items-center top-0 left-0 ml-4'>
                 <button

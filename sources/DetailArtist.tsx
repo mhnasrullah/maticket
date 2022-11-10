@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box } from '../components/Box'
-import { RecentCard, TimelineCard, dataTimeline } from '../components/Card'
+import { RecentCard, TimelineCard } from '../components/Card'
+import {dataTimeline} from '../utils/type'
 import {HeaderInfo} from '../components/Info'
 import Logo from '../components/Logo'
 import Footer from '../sections/Footer'

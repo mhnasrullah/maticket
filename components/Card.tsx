@@ -12,8 +12,6 @@ interface TimelineProps{
     href : string
 }
 
-const dataTime = [1,2,3,4,5,6,7,8,9];
-
 export const TimelineCard = ({
     title,
     data,
@@ -74,27 +72,42 @@ export const RecentCard = ({time,artist} : RecentProps) => {
 interface TicketCardProps{
     image : string,
     name : string,
-    artist : string,
+    artist : string[],
     price : string,
     href : string,
+    type : 'sold' | 'like'
     sold? : number
 }
 
-export const TicketCard = ({artist,image,name,price,sold,href} : TicketCardProps) => {
+export const TicketCard = ({artist,image,name,price,sold,type,href} : TicketCardProps) => {
     return (
-        <Link href={href}>
-            <div className="relative">
-                <div className="absolute bg-white px-2 py-1 rounded-full text-sm text-blue top-4 right-4 z-20">{sold} SOLD</div>
-                <div className='p-2 pb-6 border-gray rounded-lg border-2'>
-                    <div className='relative w-full h-64 lg:h-72'>
-                        <Image src={image} fill className="object-cover object-center rounded-md" alt={name}/>
+        <div className="relative">
+            {type == 'like' && (
+            <button className="absolute p-1 rounded-full top-4 right-4 z-20 bg-white" onClick={()=>console.log("clicked",name)}>
+                <Image src={'/assets/icons/Heart.svg'} width={20} height={20} alt="like"/>
+            </button>
+            )}
+            <Link href={href}>
+                <div className="relative">
+                    {type == 'sold' && (
+                        <div className="absolute bg-white px-2 py-1 rounded-full text-sm text-blue top-4 right-4 z-20">{sold} SOLD</div>
+                    )}
+                    <div className='p-2 pb-6 border-gray rounded-lg border-2'>
+                        <div className='relative w-full h-64 lg:h-72'>
+                            <Image src={image} fill className="object-cover object-center rounded-md" alt={name}/>
+                        </div>
+                        <h1 className='mt-2 font-semibold md:text-lg whitespace-nowrap overflow-hidden truncate'>{name}</h1>
+                        <div className='h-10 lg:text-sm lg:h-16 mt-2 overflow-y-auto w-full mb-2 text-[gray] text-xs'>
+                        {artist.map((e)=>(
+                            <p key={e}>{e}</p>
+                        ))}
+                        </div>
+                        {/* <p className='text-[gray] h-10 mb-4 overflow-hidden text-sm md:text-base'>{artist}</p> */}
+                        <p className="text-blue font-semibold">{price} MATIC</p>
                     </div>
-                    <h1 className='mt-4 font-semibold text-lg lg:text-xl'>{name}</h1>
-                    <p className='text-[gray] h-10 mb-4 overflow-hidden text-sm md:text-base'>{artist}</p>
-                    <p className="text-blue font-semibold">{price} MATIC</p>
                 </div>
-            </div>
-        </Link>
+            </Link>
+        </div>
     )
 }
 
@@ -138,32 +151,32 @@ interface RecentlyProps{
     price : string
 }
 
-export const RecentlyCardConcert = ({altImage,href,image,name,price,singer} : RecentlyProps) => {
+// export const RecentlyCardConcert = ({altImage,href,image,name,price,singer} : RecentlyProps) => {
     
-    const [liked,setLiked] = useState<boolean>(false);
+//     const [liked,setLiked] = useState<boolean>(false);
 
-    return(
-        <div className='relative'>
-            <button className="absolute p-1 rounded-full top-4 right-4 z-20 bg-white" onClick={()=>console.log("clicked",name)}>
-                <Image src={'/assets/icons/Heart.svg'} width={20} height={20} alt="like"/>
-            </button>
-            <Link href={href}>
-                <div className='p-2 pb-6 border-gray rounded-lg border-2 shadow-lg relative'>
-                    <div className='relative w-full h-48'>
-                        <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
-                    </div>
-                    <h1 className='mt-2 font-semibold md:text-lg whitespace-nowrap overflow-hidden truncate'>{name}</h1>
-                    <div className='h-10 lg:text-sm lg:h-16 mt-2 overflow-y-auto w-full mb-2 text-[gray] text-xs'>
-                        {singer.map((e)=>(
-                            <p key={e}>{e}</p>
-                        ))}
-                    </div>
-                    <p className="text-blue font-semibold">{price} MATIC</p>
-                </div>
-            </Link>
-        </div>
-    )
-}
+//     return(
+//         <div className='relative'>
+//             <button className="absolute p-1 rounded-full top-4 right-4 z-20 bg-white" onClick={()=>console.log("clicked",name)}>
+//                 <Image src={'/assets/icons/Heart.svg'} width={20} height={20} alt="like"/>
+//             </button>
+//             <Link href={href}>
+//                 <div className='p-2 pb-6 border-gray rounded-lg border-2 shadow-lg relative'>
+//                     <div className='relative w-full h-48'>
+//                         <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
+//                     </div>
+//                     <h1 className='mt-2 font-semibold md:text-lg whitespace-nowrap overflow-hidden truncate'>{name}</h1>
+//                     <div className='h-10 lg:text-sm lg:h-16 mt-2 overflow-y-auto w-full mb-2 text-[gray] text-xs'>
+//                         {singer.map((e)=>(
+//                             <p key={e}>{e}</p>
+//                         ))}
+//                     </div>
+//                     <p className="text-blue font-semibold">{price} MATIC</p>
+//                 </div>
+//             </Link>
+//         </div>
+//     )
+// }
 
 
 export default function Card() {

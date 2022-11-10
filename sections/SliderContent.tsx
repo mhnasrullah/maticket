@@ -9,7 +9,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import {HoverSetSwiper} from '../utils/enum'
 
-
 interface Props{
     showOnLarge? : number,
     blackText : string,
@@ -17,7 +16,7 @@ interface Props{
     center? : boolean | undefined
 }
 
-export default function SponsoredConcert({showOnLarge = 3,blackText,blueText,center} : Props) {
+export default function SliderContent({showOnLarge = 3,blackText,blueText,center} : Props) {
 
     const [hover,setHover] = useState<HoverSetSwiper>(HoverSetSwiper.none)
 

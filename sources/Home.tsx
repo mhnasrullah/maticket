@@ -9,7 +9,7 @@ import { GenreJumbo } from '../sections/Genre'
 import Jumbotron from '../sections/Jumbotron'
 import Nav from '../sections/Nav'
 import RecentlyConcert from '../sections/RecentlyConcert'
-import SponsoredConcert from '../sections/SponsoredConcert'
+import SponsoredConcert from '../sections/SliderContent'
 import Subscribe from '../sections/Subscribe'
 
 export default function Home() {
