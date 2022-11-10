@@ -1,5 +1,5 @@
 import React from 'react'
-import { dataTimeline } from './Card'
+import {dataTimeline} from '../utils/type'
 
 export default function Timeline({date,description,title}:dataTimeline) {
   return (
