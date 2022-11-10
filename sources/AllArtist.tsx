@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HeaderInfo } from '../components/Info'
 import Link from 'next/link'
 import Nav from '../sections/Nav'
@@ -8,8 +8,12 @@ import Text from '../components/Text'
 import Input from '../components/Input'
 import ListArtist from '../sections/ListArtist'
 import Footer from '../sections/Footer'
+// import { artistContext } from '../utils/context'
 
 export default function AllArtist() {
+
+  
+
   return (
     <div className='bg-l-gray'>
         <HeaderInfo>EVERY TICKET HAS BEEN VERIFYED AND REGISTERED ON POLYGON BLOCKCHAIN</HeaderInfo>

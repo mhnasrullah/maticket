@@ -1,14 +1,30 @@
+import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import { context } from '../utils/context'
 
 const Page = dynamic(() => import('../sources/AllArtist'), {
   suspense: true,
 })
 
-export default function Home() {
+interface Props{
+  data : object[]
+}
+
+export default function Home({data}:Props) {
+
   return (
-    <Suspense fallback={`Loading...`}>
-      <Page />
-    </Suspense>
+    <context.Provider value={data}>
+      <Suspense fallback={`Loading...`}>
+        <Page />
+      </Suspense>
+    </context.Provider>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/artist`)
+  const data = await res.json()
+
+  return { props: { data } }
 }

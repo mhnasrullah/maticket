@@ -4,6 +4,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import Timeline from './Timeline'
 import {dataTimeline} from '../utils/type'
+import { sliceString } from '../utils/func'
 
 
 interface TimelineProps{
@@ -136,7 +137,7 @@ export const SponsoredCardConcert = ({image,altImage,name,desc,href,showPerSlide
                 <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
             </div>
             <h1 className='mt-6 font-semibold text-3xl'>{name}</h1>
-            <p className='text-[gray] mt-3 h-16 mb-4 overflow-hidden lg:px-6 text-sm md:text-base'>{desc}</p>
+            <p className='text-[gray] mt-3 h-20 mb-4 overflow-hidden lg:px-6 text-sm md:text-base'>{sliceString(desc)}</p>
             <Link href={href} className="text-blue font-semibold">SEE TICKET</Link>
         </div>
     )

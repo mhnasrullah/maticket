@@ -9,3 +9,9 @@ export enum HoverSetSwiper {
     right,
     none
 }
+
+export enum statusData{
+    found,
+    notFound,
+    load
+}

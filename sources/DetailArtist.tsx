@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Box } from '../components/Box'
 import { RecentCard, TimelineCard } from '../components/Card'
 import {dataTimeline} from '../utils/type'
@@ -9,6 +9,7 @@ import { ArtistJumbo } from '../sections/Jumbotron'
 import ListTicketArtist from '../sections/ListTicketArtist'
 import Link from 'next/link'
 import Nav from '../sections/Nav'
+import { context } from '../utils/context'
 
 const data : dataTimeline[] = [
   {
@@ -59,6 +60,10 @@ const data : dataTimeline[] = [
 ];
 
 export default function ArtistDetail() {
+
+  const {title,banner_image,image} = useContext(context);
+  // console.log(ctx)
+
   return (
     <div className='bg-l-gray'>
       <HeaderInfo>EVERY TICKET HAS BEEN VERIFYED AND REGISTERED ON POLYGON BLOCKCHAIN</HeaderInfo>
@@ -72,9 +77,9 @@ export default function ArtistDetail() {
           <div className='lg:w-3/4'>
             <ArtistJumbo
             data={{
-                name : "Meghan Trainor Official",
-                banner : "/assets/images/jumbo.jpg",
-                image : "/assets/images/jumbo.jpg",
+                name : title,
+                banner : banner_image,
+                image : image,
                 verified : true
             }}/>
 
@@ -82,7 +87,7 @@ export default function ArtistDetail() {
           </div>
           <div className='lg:w-1/4 mt-6 lg:mt-0'>
             <RecentCard
-            artist='morghan'
+            artist={title}
             time='08.00 AM - 10.00 AM'
             />
             <div className="mt-6">

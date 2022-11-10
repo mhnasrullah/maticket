@@ -45,7 +45,7 @@ export default function Nav() {
           </button>
           <div className={`flex z-10 lg:flex-row lg:space-x-8 items-center lg:static absolute inset-x-0 flex-col ${show ? 'top-12' : 'hidden lg:flex'} bg-white lg:space-y-0 space-y-6 pb-12 pt-12 lg:pt-0 lg:pb-0`}>
             <Link href={"/"}>EVENT</Link>
-            <Link href={"/artist/1"}>ARTIST</Link>
+            <Link href={"/artist/4"}>ARTIST</Link>
             <Link href={"/"} className="py-2 px-4 rounded-full border-2 border-blue flex justify-center">
               <div className='relative mr-2'>
                 <Image src={"/assets/icons/wallet.svg"} width={22} height={20} alt="wallet"/>
