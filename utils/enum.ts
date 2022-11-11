@@ -15,3 +15,11 @@ export enum statusData{
     notFound,
     load
 }
+
+export enum infoTicket{
+    about,
+    highlight,
+    line_up,
+    show_area,
+    maps
+}

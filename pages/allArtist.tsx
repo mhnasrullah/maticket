@@ -12,7 +12,6 @@ interface Props{
 }
 
 export default function Home({data}:Props) {
-
   return (
     <context.Provider value={data}>
       <Suspense fallback={`Loading...`}>

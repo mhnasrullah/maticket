@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../components/Button'
 import Image from 'next/image'
+import { infoTicket } from '../utils/enum'
 
 const AboutInfo = () => {
     // GANTI DENGAN CONTEXT
@@ -38,23 +39,37 @@ const AboutInfo = () => {
     )
 }
 
+
 export default function InfoTicket() {
+
+    const [activeSection,setActiveSection] = useState<infoTicket>(infoTicket.about)
+    
   return (
     <div className='py-12'>
         <div className='flex text-sm lg:text-base font-medium overflow-x-auto py-2'>
-            <button className='px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap border-b-blue text-blue'>
+            <button 
+            onClick={()=>setActiveSection(infoTicket.about)}
+            className={`px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap ${activeSection == infoTicket.about ? 'border-b-blue text-blue' : 'border-trans'}`}>
                 About
             </button>
-            <button className='px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap border-trans'>
+            <button 
+            onClick={()=>setActiveSection(infoTicket.highlight)}
+            className={`px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap ${activeSection == infoTicket.highlight ? 'border-b-blue text-blue' : 'border-trans'}`}>
                 Highlight
             </button>
-            <button className='px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap border-trans'>
+            <button 
+            onClick={()=>setActiveSection(infoTicket.line_up)}
+            className={`px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap ${activeSection == infoTicket.line_up ? 'border-b-blue text-blue' : 'border-trans'}`}>
                 Line Up
             </button>
-            <button className='px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap border-trans'>
+            <button 
+            onClick={()=>setActiveSection(infoTicket.show_area)}
+            className={`px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap ${activeSection == infoTicket.show_area ? 'border-b-blue text-blue' : 'border-trans'}`}>
                 Show Area
             </button>
-            <button className='px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap border-trans'>
+            <button 
+            onClick={()=>setActiveSection(infoTicket.maps)}
+            className={`px-3 py-1 lg:px-5 lg:py-2 border-b-2 whitespace-nowrap ${activeSection == infoTicket.maps ? 'border-b-blue text-blue' : 'border-trans'}`}>
                 Maps
             </button>
         </div>

@@ -24,15 +24,7 @@ export default function RecentlyConcert() {
         </div>
         <div className='grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-5'>
             {data.map((e,i)=>(
-                <div key={e.id} className={`${i === 0 ? "col-start-1 col-end-3 md:col-end-2 w-full" : ' '}`}>
-                    {/* <RecentlyCardConcert
-                    altImage = {e.name}
-                    href = "/"
-                    image={e.images}
-                    name={e.name}
-                    price={e.price}
-                    singer = {e.singer}
-                    /> */}
+                <div key={e.id}>
                     <TicketCard
                     type='like'
                     artist={e.singer}

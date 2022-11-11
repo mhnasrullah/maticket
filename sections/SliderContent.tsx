@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Swiper,SwiperSlide} from 'swiper/react'
 import { Box } from '../components/Box'
 import Text from '../components/Text'
-import { SponsoredCardConcert } from '../components/Card'
+import { LargeCard } from '../components/Card'
 import { Navigation } from 'swiper'
 import Image from 'next/image'
 import 'swiper/css';
@@ -54,51 +54,19 @@ export default function SliderContent({showOnLarge = 3,blackText,blueText,center
                 prevEl : ".prevEl"
             }}
             >
-                <SwiperSlide>
-                    <SponsoredCardConcert
-                    showPerSlideonLarge={showOnLarge}
-                    image='/assets/images/jumbo.jpg'
-                    altImage='test'
-                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
-                    href='/'
-                    name='BTS in Las Vegas'/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SponsoredCardConcert
-                    showPerSlideonLarge={showOnLarge}
-                    image='/assets/images/jumbo.jpg'
-                    altImage='test'
-                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
-                    href='/'
-                    name='BTS in Las Vegas'/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SponsoredCardConcert
-                    showPerSlideonLarge={showOnLarge}
-                    image='/assets/images/jumbo.jpg'
-                    altImage='test'
-                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
-                    href='/'
-                    name='BTS in Las Vegas'/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SponsoredCardConcert
-                    showPerSlideonLarge={showOnLarge}
-                    image='/assets/images/jumbo.jpg'
-                    altImage='test'
-                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
-                    href='/'
-                    name='BTS in Las Vegas'/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SponsoredCardConcert
-                    showPerSlideonLarge={showOnLarge}
-                    image='/assets/images/jumbo.jpg'
-                    altImage='test'
-                    desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
-                    href='/'
-                    name='BTS in Las Vegas'/>
-                </SwiperSlide>
+                {[...Array(6)].map((e,i)=>(
+                    <SwiperSlide key={i}>
+                        <LargeCard
+                        textLink='SEE TICKET'
+                        showPerSlideonLarge={showOnLarge}
+                        image='/assets/images/jumbo.jpg'
+                        altImage='test'
+                        desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
+                        href='/'
+                        name='BTS in Las Vegas'/>
+                    </SwiperSlide>
+                ))}
+
                 <div className='absolute h-full width-10 z-10 flex items-center top-0 left-0 ml-4'>
                     <button
                     className='prevEl'

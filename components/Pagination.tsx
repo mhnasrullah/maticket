@@ -20,7 +20,7 @@ export default function Pagination({active,total} : dataProps) {
           setActived(actived-1)
         }
       }}
-      className={`w-8 h-8 ${actived == 1 ? 'bg-l-gray' : 'bg-blue'} flex justify-center items-center rounded-lg`}>
+      className={`w-8 h-8 ${actived == 1 ? 'bg-gray' : 'bg-blue'} flex justify-center items-center rounded-lg`}>
         <div className='relative w-3 h-3'>
           <Image alt='previous' src={"/assets/icons/arrPagination.svg"} fill/>
         </div>
@@ -74,7 +74,7 @@ export default function Pagination({active,total} : dataProps) {
           setActived(actived+1)
         }
       }}
-      className={`w-8 h-8 ${actived >= total ? 'bg-l-gray' : 'bg-blue'} flex justify-center items-center rounded-lg rotate-180`}>
+      className={`w-8 h-8 ${actived >= total ? 'bg-gray' : 'bg-blue'} flex justify-center items-center rounded-lg rotate-180`}>
         <div className='relative w-3 h-3'>
           <Image alt='previous' src={"/assets/icons/arrPagination.svg"} fill/>
         </div>

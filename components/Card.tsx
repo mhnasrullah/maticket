@@ -118,10 +118,11 @@ interface SponsoredProps{
     name : string,
     desc : string,
     href : string,
+    textLink : string,
     showPerSlideonLarge? : number
 }
 
-export const SponsoredCardConcert = ({image,altImage,name,desc,href,showPerSlideonLarge = 3} : SponsoredProps) => {
+export const LargeCard = ({image,altImage,name,desc,href,textLink,showPerSlideonLarge = 3} : SponsoredProps) => {
 
     let heightImage : string | undefined;
 
@@ -132,53 +133,16 @@ export const SponsoredCardConcert = ({image,altImage,name,desc,href,showPerSlide
     }
 
     return (
-        <div className='p-2 pb-6 border-gray rounded-lg border-2 text-center'>
+        <div className='p-2 pb-6 bg-white border-gray rounded-lg border-2 text-center'>
             <div className={`relative w-full ${heightImage}`}>
                 <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
             </div>
             <h1 className='mt-6 font-semibold text-3xl'>{name}</h1>
             <p className='text-[gray] mt-3 h-20 mb-4 overflow-hidden lg:px-6 text-sm md:text-base'>{sliceString(desc)}</p>
-            <Link href={href} className="text-blue font-semibold">SEE TICKET</Link>
+            <Link href={href} className="text-blue font-semibold">{textLink}</Link>
         </div>
     )
 }
-
-interface RecentlyProps{
-    image : string,
-    altImage : string,
-    name : string,
-    singer : string[],
-    href : string,
-    price : string
-}
-
-// export const RecentlyCardConcert = ({altImage,href,image,name,price,singer} : RecentlyProps) => {
-    
-//     const [liked,setLiked] = useState<boolean>(false);
-
-//     return(
-//         <div className='relative'>
-//             <button className="absolute p-1 rounded-full top-4 right-4 z-20 bg-white" onClick={()=>console.log("clicked",name)}>
-//                 <Image src={'/assets/icons/Heart.svg'} width={20} height={20} alt="like"/>
-//             </button>
-//             <Link href={href}>
-//                 <div className='p-2 pb-6 border-gray rounded-lg border-2 shadow-lg relative'>
-//                     <div className='relative w-full h-48'>
-//                         <Image src={image} fill alt={altImage} className="object-cover object-center rounded-md"/>
-//                     </div>
-//                     <h1 className='mt-2 font-semibold md:text-lg whitespace-nowrap overflow-hidden truncate'>{name}</h1>
-//                     <div className='h-10 lg:text-sm lg:h-16 mt-2 overflow-y-auto w-full mb-2 text-[gray] text-xs'>
-//                         {singer.map((e)=>(
-//                             <p key={e}>{e}</p>
-//                         ))}
-//                     </div>
-//                     <p className="text-blue font-semibold">{price} MATIC</p>
-//                 </div>
-//             </Link>
-//         </div>
-//     )
-// }
-
 
 export default function Card() {
   return (

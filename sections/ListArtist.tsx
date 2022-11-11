@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import { Box } from '../components/Box'
-import { SponsoredCardConcert } from '../components/Card'
+import { LargeCard } from '../components/Card'
 import Pagination from '../components/Pagination'
 import { context } from '../utils/context'
 
@@ -11,12 +11,13 @@ export default function ListArtist() {
     <Box className='py-16'>
         <div className="grid md:grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
           {ctx != null && Array.isArray(ctx) && ctx.map((e,i)=>(
-                <SponsoredCardConcert
+                <LargeCard
+                textLink='VIEW ARTIST DETAILS'
                 key={i}
                 image={e.image}
                 name={e.title}
                 altImage={e.name}
-                href='/artist/1'
+                href={`/artist/${e.id}`}
                 desc={e.bio}/>
             ))}
         </div>
