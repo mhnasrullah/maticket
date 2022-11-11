@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HeaderInfo } from '../components/Info'
 import Link from 'next/link'
 import Logo from '../components/Logo'
 import Nav from '../sections/Nav'
 import {TicketCard } from '../components/Card'
-import SponsoredConcert from '../sections/SliderContent'
+import SliderConcert from '../sections/SliderContent'
 import { Box } from '../components/Box'
 import Text from '../components/Text'
 import Pagination from '../components/Pagination'
 import Footer from '../sections/Footer'
+import {context} from '../utils/context'
+import { strToArray } from '../utils/func'
 
 export default function AllEvent() {
+
+  const dataEvent = useContext(context)
+
+  // console.log(data,'allTicket')
   return (
     <div className='bg-l-gray'>
         <HeaderInfo>EVERY TICKET HAS BEEN VERIFYED AND REGISTERED ON POLYGON BLOCKCHAIN</HeaderInfo>
@@ -20,12 +26,14 @@ export default function AllEvent() {
             </Link>
         </div>
         <Nav/>
-        <SponsoredConcert
+        <SliderConcert
+        data={dataEvent}
         blackText='Sponsored'
         blueText='Concert'
         center
         />
-        <SponsoredConcert
+        <SliderConcert
+        data={dataEvent}
         blackText='Recently'
         blueText='Concert'
         center/>
@@ -40,16 +48,31 @@ export default function AllEvent() {
             underline
             />
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5 mt-12">
-                {[...Array(10)].map((e,i)=>(
+                {dataEvent.map((e : any,i:number)=>{
+
+                  let artist:string[] = [];
+
+                  e.line_up_artist.map((e : any)=>{
+                    artist = [
+                      ...artist,
+                      e.title
+                    ]
+                  })
+
+                  return (
+                    <>
                     <TicketCard
                     type='like'
                     key={i}
                     href='/ticket/1'
-                    image='/assets/images/jumbo.jpg'
-                    name='Jakarta Peace Conncert'
-                    price='10,00'
-                    artist={['Juan Marley']}/>
-                ))}
+                    image={e.image}
+                    name={e.title}
+                    price={(strToArray(e.price)[0]).slice(1,-1)}
+                    artist={artist}/>
+                    </>
+                  )
+                })
+                }
             </div>
             <div className='flex justify-center md:justify-end mt-6 lg:mt-12'>
                 <Pagination

@@ -12,8 +12,6 @@ import Footer from '../sections/Footer'
 
 export default function AllArtist() {
 
-  
-
   return (
     <div className='bg-l-gray'>
         <HeaderInfo>EVERY TICKET HAS BEEN VERIFYED AND REGISTERED ON POLYGON BLOCKCHAIN</HeaderInfo>
@@ -39,7 +37,7 @@ export default function AllArtist() {
                 widthStyle='mt-4 md:mt-0 md:w-1/2 w-full h-fit'
                 type={"text"}
                 outline
-                placeholder='find events here...'
+                placeholder='find your favorite band/artist here...'
                 buttonType='icons'
                 buttonContent='/assets/icons/searchIcons.svg'/>
             </div>

@@ -13,10 +13,11 @@ interface Props{
     showOnLarge? : number,
     blackText : string,
     blueText : string,
-    center? : boolean | undefined
+    center? : boolean | undefined,
+    data : any[]
 }
 
-export default function SliderContent({showOnLarge = 3,blackText,blueText,center} : Props) {
+export default function SliderContent({showOnLarge = 3,blackText,blueText,center,data} : Props) {
 
     const [hover,setHover] = useState<HoverSetSwiper>(HoverSetSwiper.none)
 
@@ -54,16 +55,16 @@ export default function SliderContent({showOnLarge = 3,blackText,blueText,center
                 prevEl : ".prevEl"
             }}
             >
-                {[...Array(6)].map((e,i)=>(
+                {data.map((e:any,i : number)=>(
                     <SwiperSlide key={i}>
                         <LargeCard
                         textLink='SEE TICKET'
                         showPerSlideonLarge={showOnLarge}
-                        image='/assets/images/jumbo.jpg'
-                        altImage='test'
-                        desc='Lorem ipsum dolor sit amet consectetur adipisicing.'
-                        href='/'
-                        name='BTS in Las Vegas'/>
+                        image={e.image ? e.image : '/assets/images/jumbo.jpg'}
+                        altImage={e.title}
+                        desc={e.short_description}
+                        href='/artist/'
+                        name={e.title}/>
                     </SwiperSlide>
                 ))}
 
