@@ -61,7 +61,7 @@ const data : dataTimeline[] = [
 
 export default function ArtistDetail() {
 
-  const {title,banner_image,image} = useContext(context);
+  const {title,banner_image,image,country,website,genre} = useContext(context);
   // console.log(ctx)
 
   return (
@@ -77,10 +77,13 @@ export default function ArtistDetail() {
           <div className='lg:w-3/4'>
             <ArtistJumbo
             data={{
+                country : country,
                 name : title,
                 banner : banner_image,
                 image : image,
-                verified : true
+                verified : true,
+                website : website,
+                genre : genre
             }}/>
 
             <ListTicketArtist/>

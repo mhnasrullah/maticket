@@ -63,7 +63,7 @@ export default function SliderContent({showOnLarge = 3,blackText,blueText,center
                         image={e.image ? e.image : '/assets/images/jumbo.jpg'}
                         altImage={e.title}
                         desc={e.short_description}
-                        href='/artist/'
+                        href={`/ticket/${e.id}`}
                         name={e.title}/>
                     </SwiperSlide>
                 ))}

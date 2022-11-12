@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HeaderInfo } from '../components/Info'
 import Link from 'next/link'
 import Logo from '../components/Logo'
@@ -19,10 +19,14 @@ import 'swiper/css/navigation';
 import MoreFromArtist from '../sections/MoreFromArtist'
 import { TicketCard } from '../components/Card'
 import Footer from '../sections/Footer'
+import { context } from '../utils/context'
+import { strToArray } from '../utils/func'
 
 const Related = ['World','Pop']
 
 export default function DetailTicket() {
+
+  const {title,AllEvent} = useContext(context)
   return (
     <div>
         <HeaderInfo>EVERY TICKET HAS BEEN VERIFYED AND REGISTERED ON POLYGON BLOCKCHAIN</HeaderInfo>
@@ -44,7 +48,7 @@ export default function DetailTicket() {
                 href : '/'
               },
               {
-                name : 'Justice World Tour'
+                name : title
               }
             ]}
           />
@@ -85,16 +89,28 @@ export default function DetailTicket() {
             underline/>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mt-12'>
-              {[...Array(4)].map((e,i)=>(
-                <TicketCard
+              {AllEvent.map((e : any,i : number)=>{
+
+                let artist : string[] = [];
+
+                e.line_up_artist.map((ei : any)=>(
+                    artist = [
+                        ...artist,
+                        ei.title
+                    ]
+                ))
+                return (
+                  <TicketCard
                 type='like'
                 key={i}
-                artist={['Juan Marley']}
-                href='/ticket/1'
-                image='/assets/images/jumbo.jpg'
-                name='Jakarta Peace Concert'
-                price='10,00'/>
-              ))}
+                artist={artist}
+                href={`/ticket/${e.id}`}
+                image={e.image}
+                name={e.title}
+                price={`${strToArray(e.price)[0].slice(1,-1)},00`}/>
+                )
+              }
+              )}
             </div>
         </Box>
       </div>

@@ -4,19 +4,23 @@ import Button from '../components/Button'
 import styled from 'styled-components'
 import Image from 'next/image'
 import {activeSection} from '../utils/enum'
+import { strToArray } from '../utils/func'
 
 interface ArtistProps{
     data : {
         banner : string | undefined,
         name : string,
         image : string,
-        verified : boolean
+        verified : boolean,
+        country : string,
+        website : string,
+        genre : string
     }
 }
 
 export const ArtistJumbo = (
     {
-        data :{banner,name,image,verified},
+        data :{banner,name,image,verified,country,website,genre},
     } : ArtistProps) => {
 
 
@@ -49,10 +53,7 @@ export const ArtistJumbo = (
                     </div>
                     <div className='flex flex-col lg:flex-row lg:items-center lg:mt-4 lg:space-x-16'>
                         <div className='flex space-x-2 mt-1 items-center'>
-                            <div className='relative w-6 lg:w-12'>
-                                <Image alt='USA' src={'/assets/images/flag.png'} width={46} height={36} />
-                            </div>
-                            <p className='text-sm md:text-base'>United States</p>
+                            <p className='text-sm md:text-base'>{country}</p>
                         </div>
                         <div className='mt-4 lg:mt-0 flex space-x-3 lg:space-x-6 items-center'>
                             <a href="/" >
@@ -77,7 +78,7 @@ export const ArtistJumbo = (
                     </div>
                     <div className='flex space-x-2 mt-4 lg:mt-6 lg:space-x-16'>
                         <p className='text-xs lg:text-base'>Joined : 01-01-2022</p>
-                        <p className='text-xs lg:text-base'>hi@meghantrainor.com</p>
+                        <p className='text-xs lg:text-base'>{website}</p>
                     </div>
                 </div>
                 <div className='mt-6 lg:mt-12'>
@@ -103,10 +104,13 @@ export const ArtistJumbo = (
                         </div>
                     </div>
                     <div className="flex space-x-2 mt-2 lg:mt-4">
-                        <Button
-                        style='secondary'
-                        type='button'
-                        >Pop</Button>
+                        {strToArray(genre).map((e,i)=>(
+                            <Button
+                            key={i}
+                            style='secondary'
+                            type='button'
+                            >{e.slice(1,-1)}</Button>
+                        ))}
                     </div>
                 </div>
                 <div className='mt-6 lg:mt-10'>

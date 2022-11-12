@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box } from '../components/Box'
 import { HeaderInfo } from '../components/Info'
 import Logo from '../components/Logo'
@@ -11,8 +11,12 @@ import Nav from '../sections/Nav'
 import RecentlyConcert from '../sections/RecentlyConcert'
 import SponsoredConcert from '../sections/SliderContent'
 import Subscribe from '../sections/Subscribe'
+import {context} from '../utils/context'
 
 export default function Home() {
+
+  const {event} = useContext(context)
+  
   return (
     <>
         <HeaderInfo>EVERY TICKET HAS BEEN VERIFYED AND REGISTERED ON POLYGON BLOCKCHAIN</HeaderInfo>
@@ -25,6 +29,7 @@ export default function Home() {
         <Jumbotron/>
         <GenreJumbo/>
         <SponsoredConcert
+        data={event}
         center
         blackText='Sponsored'
         blueText='Concert'/>

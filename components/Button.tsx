@@ -8,10 +8,11 @@ interface ButtonProps {
     className? : string,
     onClick? : React.MouseEventHandler,
     key? : number,
-    classTextColor? : string
+    classTextColor? : string,
+    href? : string
 }
 
-const Button : React.FC<ButtonProps> = ({type,style,classTextColor,className,children,...props}) => {
+const Button : React.FC<ButtonProps> = ({type,style,classTextColor,className,children,href,...props}) => {
 
     let styled : string = '';
 
@@ -22,11 +23,11 @@ const Button : React.FC<ButtonProps> = ({type,style,classTextColor,className,chi
     }
 
 
-    if(type === 'button'){
+    if(type === 'link'){
         return (
-            <Link href={'/'} {...props} className={styled}>{children}</Link>
+            <Link href={ href ? href : '/' } {...props} className={styled}>{children}</Link>
         )
-    }else if (type === 'link'){
+    }else if (type === 'button'){
         return (
             <button {...props} className={styled}>{children}</button>
         )

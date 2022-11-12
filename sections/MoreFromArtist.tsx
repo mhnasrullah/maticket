@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useContext, useState} from 'react'
 import Text from '../components/Text'
 import { Swiper,SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
@@ -6,16 +6,22 @@ import { HoverSetSwiper } from '../utils/enum'
 import Image from 'next/image'
 import { Box } from '../components/Box'
 import { TicketCard } from '../components/Card'
+import { context } from '../utils/context'
+import { strToArray } from '../utils/func'
+
 
 export default function MoreFromArtist() {
     const [hover,setHover] = useState<HoverSetSwiper>(HoverSetSwiper.none)
+
+    const {AllEvent,line_up_artist} = useContext(context)
+    console.log(AllEvent,"all event")
   return (
     <Box>
         <Text
         type='primary'
         className='mb-8 mt-16 lg:mb-12 lg:mt-24 w-fit'
         blackText={'More From'}
-        blueText={'Justin Beiber'}
+        blueText={line_up_artist[0].title}
         underline/>
 
         <Swiper
@@ -41,18 +47,31 @@ export default function MoreFromArtist() {
             prevEl : ".prevEl"
         }}
         >
-            {[...Array(6)].map((e,i)=>(
-                <SwiperSlide key={i}>
-                    <TicketCard
-                    type='like'
-                    artist={['Justin Beiber']}
-                    href='/ticket/1'
-                    image='/assets/images/jumbo.jpg'
-                    name='Justice:Toronto'
-                    price='10,00'
-                    />
-                </SwiperSlide>
-            ))}
+            {AllEvent.map((e : any,i : number)=>{
+
+                let artist : string[] = [];
+
+                e.line_up_artist.map((ei : any)=>(
+                    artist = [
+                        ...artist,
+                        ei.title
+                    ]
+                ))
+
+                return(
+                    <SwiperSlide key={i}>
+                        <TicketCard
+                        type='like'
+                        artist={artist}
+                        href={`/ticket/${e.id}`}
+                        image={e.image}
+                        name={e.title}
+                        price={`${strToArray(e.price)[0].slice(1,-1)},00`}
+                        />
+                    </SwiperSlide>
+                )
+            }
+            )}
             
             
             <div className='absolute h-full width-10 z-10 flex items-center top-0 left-0 ml-4'>
