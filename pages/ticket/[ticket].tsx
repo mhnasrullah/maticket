@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { statusData } from '../../utils/enum';
 import { context } from '../../utils/context'
 import { getArtistbyId } from '../../utils/func';
+import Loading from '../../sections/Loading';
 
 
 const Page = dynamic(() => import('../../sources/DetailTicket'), {
@@ -25,7 +26,7 @@ export default function Home({data}:Props) {
       setStatus(statusData.found)
     }else{
       setStatus(statusData.notFound)
-      push("/")
+      push("/404")
     }
   },[]);
 
@@ -35,17 +36,13 @@ export default function Home({data}:Props) {
         ...getArtistbyId(data,Number(ticket)),
         AllEvent : data
         }}>
-        <Suspense fallback={`Loading...`}>
+        <Suspense fallback={<Loading/>}>
           <Page />
         </Suspense>
       </context.Provider>
     )
-  }else{
-    return(
-      <>
-      `loading`
-      </>
-    )
+  }else if(status==statusData.load){
+    return(<Loading/>)
   }
 }
 

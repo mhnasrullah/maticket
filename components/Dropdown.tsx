@@ -18,7 +18,7 @@ export default function Dropdown({options,name} : Props) {
         className='py-2 rounded-full px-4 flex items-center bg-l-gray border-[1px] border-[gray] text-start text-sm lg:text-base'>
             {value ? value : name}
             <div className='relative w-3 h-3 ml-4'>
-                <Image src={'/assets/icons/arrdown.svg'} fill alt='arrow'/>
+                <Image src={'/assets/icons/arrdown.svg'} sizes='100vw' fill alt='arrow'/>
             </div>
         </button>
         <div className={`absolute top-12 py-3 bg-l-gray flex-col space-y-2 rounded-sm w-full border-[1px] border-[gray] z-40 ${show ? 'flex' : 'hidden'}`}>
@@ -58,7 +58,7 @@ export const DropdownNav = ({active,options} : NavDropdown) => {
                     <p>{value}</p>
                 )}
                 <div className='relative w-3 h-3 ml-2'>
-                    <Image src={'/assets/icons/arrdown.svg'} fill alt='arrow'/>
+                    <Image src={'/assets/icons/arrdown.svg'} sizes='100vw' fill alt='arrow'/>
                 </div>
             </button>
             <div className={show ? 'z-10 w-full bg-white absolute top-16 left-0 max-h-52 overflow-y-auto' : 'hidden'}>

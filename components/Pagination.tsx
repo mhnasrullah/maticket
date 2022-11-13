@@ -22,7 +22,7 @@ export default function Pagination({active,total} : dataProps) {
       }}
       className={`w-8 h-8 ${actived == 1 ? 'bg-gray' : 'bg-blue'} flex justify-center items-center rounded-lg`}>
         <div className='relative w-3 h-3'>
-          <Image alt='previous' src={"/assets/icons/arrPagination.svg"} fill/>
+          <Image alt='previous' src={"/assets/icons/arrPagination.svg"} fill sizes='100vw'/>
         </div>
       </button>
 
@@ -76,7 +76,7 @@ export default function Pagination({active,total} : dataProps) {
       }}
       className={`w-8 h-8 ${actived >= total ? 'bg-gray' : 'bg-blue'} flex justify-center items-center rounded-lg rotate-180`}>
         <div className='relative w-3 h-3'>
-          <Image alt='previous' src={"/assets/icons/arrPagination.svg"} fill/>
+          <Image alt='previous' src={"/assets/icons/arrPagination.svg"} fill sizes='100vw'/>
         </div>
       </button>
 

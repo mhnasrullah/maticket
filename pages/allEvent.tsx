@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import Loading from '../sections/Loading'
 import {context} from '../utils/context'
 
 const Page = dynamic(() => import('../sources/AllEvent'), {
@@ -15,7 +16,7 @@ export default function Home({data} : Props) {
 
   return (
     <context.Provider value={data}>
-      <Suspense fallback={`Loading...`}>
+      <Suspense fallback={<Loading/>}>
         <Page />
       </Suspense>
     </context.Provider>

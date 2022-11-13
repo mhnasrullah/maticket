@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box } from '../components/Box'
 import Image from 'next/image'
-import Link from 'next/link'
 import Button from '../components/Button'
 
 export default function Faq() {
@@ -9,7 +8,7 @@ export default function Faq() {
     <div className='mb-16 lg:mb-24'>
       <Box className='flex flex-col md:flex-row md:space-x-6 lg:space-x-16'>
         <div className='w-full h-56 lg:h-[350px] md:h-72 lg:w-2/3 md:w-1/2 relative'>
-          <Image src={"/assets/images/jumbo.jpg"} className="object-cover object-center rounded-lg" fill alt='faq cover'/>
+          <Image src={"/assets/images/jumbo.jpg"} className="object-cover object-center rounded-lg" sizes='100vw' fill alt='faq cover'/>
         </div>
         <div className='mt-6 md:w-1/2 lg:w-1/3 md:flex md:flex-col md:justify-between md:mt-0'>
           <div>

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { HTMLInputTypeAttribute } from 'react'
+import React, { ChangeEventHandler, HTMLInputTypeAttribute } from 'react'
 
 interface InputProps {
     type? : HTMLInputTypeAttribute
@@ -7,7 +7,9 @@ interface InputProps {
     buttonType : 'text' | 'icons'
     buttonContent : string
     outline? : boolean
-    widthStyle? : string
+    widthStyle? : string,
+    value : string | number | readonly string[] | undefined,
+    onChange : ChangeEventHandler<HTMLInputElement> | undefined
 }
 
 export default function Input( {buttonContent,widthStyle,buttonType,outline,...props} : InputProps) {

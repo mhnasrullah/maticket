@@ -1,14 +1,8 @@
 import React from 'react'
 import {Box} from '../components/Box'
 import data from '../data/genre.json'
-import styled from 'styled-components'
 import Button from '../components/Button'
 import Text from '../components/Text'
-
-// const HideScrollbar = styled.div`
-//     // -ms-overflow-style: none;
-//     // scrollbar-width: none;
-// `
 
 export const GenreJumbo = () => {
     return (

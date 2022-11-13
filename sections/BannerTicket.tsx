@@ -1,16 +1,15 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import Image from 'next/image'
 import { context } from '../utils/context'
 
 export default function BannerTicket() {
-    // const [show,setShow] = useState('/assets/images/jumbo.jpg')
 
     const {image} = useContext(context)
   return (
     <div>
         <div className="flex flex-col md:flex-row-reverse">
             <div className="relative w-full h-72 md:h-[500px]">
-                <Image src={image} className="object-cover object-center" fill sizes={'100vw'} alt="img"/>
+                <Image src={image} className="object-cover object-center" fill  sizes={'100vw'} alt="img"/>
             </div>
             {/* <div className="flex w-full md:w-fit md:flex-col md:space-x-0 md:py-0 md:space-y-2 md:mr-2 overflow-x-auto md:overflow-x-hidden md:overflow-y-auto md:h-[500px] space-x-2 py-2">
             {[...Array(8)].map((e,i)=>(

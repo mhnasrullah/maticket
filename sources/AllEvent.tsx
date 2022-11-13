@@ -16,7 +16,6 @@ export default function AllEvent() {
 
   const dataEvent = useContext(context)
 
-  // console.log(data,'allTicket')
   return (
     <div className='bg-l-gray'>
         <HeaderInfo>EVERY TICKET HAS BEEN VERIFYED AND REGISTERED ON POLYGON BLOCKCHAIN</HeaderInfo>
@@ -25,7 +24,7 @@ export default function AllEvent() {
               <Logo/>
             </Link>
         </div>
-        <Nav/>
+        <Nav dataEvent={dataEvent}/>
         <SliderConcert
         data={dataEvent}
         blackText='Sponsored'
@@ -52,15 +51,14 @@ export default function AllEvent() {
 
                   let artist:string[] = [];
 
-                  e.line_up_artist.map((e : any)=>{
+                  e.line_up_artist.map((ei : any)=>{
                     artist = [
                       ...artist,
-                      e.title
+                      ei.title
                     ]
                   })
 
                   return (
-                    <>
                     <TicketCard
                     type='like'
                     key={i}
@@ -69,7 +67,6 @@ export default function AllEvent() {
                     name={e.title}
                     price={(strToArray(e.price)[0]).slice(1,-1)}
                     artist={artist}/>
-                    </>
                   )
                 })
                 }

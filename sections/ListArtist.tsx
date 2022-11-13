@@ -4,13 +4,27 @@ import { LargeCard } from '../components/Card'
 import Pagination from '../components/Pagination'
 import { context } from '../utils/context'
 
-export default function ListArtist() {
-  const ctx = useContext(context)
+interface Props{
+  search : string | null
+}
+
+export default function ListArtist({search}:Props) {
+  const {data} = useContext(context);
   
   return (
     <Box className='py-16'>
         <div className="grid md:grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
-          {ctx != null && Array.isArray(ctx) && ctx.map((e,i)=>(
+          {data != null
+          && Array.isArray(data)
+          && data
+          .filter((e)=>{
+            if(search){
+              return e.title.toLowerCase().match(search.toLowerCase())
+            }else{
+              return e
+            }
+          })
+          .map((e,i)=>(
                 <LargeCard
                 textLink='VIEW ARTIST DETAILS'
                 key={i}

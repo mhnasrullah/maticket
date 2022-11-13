@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import Loading from '../sections/Loading'
 import { context } from '../utils/context'
 
 const Page = dynamic(() => import('../sources/AllArtist'), {
@@ -8,13 +9,17 @@ const Page = dynamic(() => import('../sources/AllArtist'), {
 })
 
 interface Props{
-  data : object[]
+  data : object[],
+  event : object[]
 }
 
-export default function Home({data}:Props) {
+export default function Home({data,event}:Props) {
   return (
-    <context.Provider value={data}>
-      <Suspense fallback={`Loading...`}>
+    <context.Provider value={{
+      data,
+      event
+      }}>
+      <Suspense fallback={<Loading/>}>
         <Page />
       </Suspense>
     </context.Provider>
@@ -25,5 +30,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/artist`)
   const data = await res.json()
 
-  return { props: { data } }
+  const resEvent = await fetch(`${process.env.NEXT_PUBLIC_API}/event-ticket`)
+  const event = await resEvent.json()
+
+  return { props: {
+    data,
+    event
+  } }
 }

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box } from '../components/Box'
-import Button from '../components/Button'
 import Input from '../components/Input'
 
 export default function Subscribe() {
+  const [value,setValue] = useState<string>("")
   return (
     <div className='py-8 md:py-12 lg:py-16 bg-blue'>
         <Box className='md:flex md:space-x-4 md:items-end md:justify-between lg:items-center'>
@@ -13,6 +13,8 @@ export default function Subscribe() {
             </div>
             <div className='mt-8'>
                 <Input
+                value={value}
+                onChange={(e)=>setValue(e.target.value)}
                 type={'text'}
                 buttonType = 'text'
                 buttonContent='Subscribe'

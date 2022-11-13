@@ -15,19 +15,19 @@ export default function Footer() {
                 </div>
                 <a href="/" className='flex items-center'>
                     <div className='w-8 h-8 relative mr-2'>
-                        <Image src={'/assets/icons/whatsapp.svg'} alt="whatsapp-icons" fill/>
+                        <Image src={'/assets/icons/whatsapp.svg'} alt="whatsapp-icons" fill sizes='100vw'/>
                     </div>
                     +1 888 888 123
                 </a>
                 <a href="/" className='flex items-center'>
                     <div className='w-8 h-8 relative mr-2'>
-                        <Image src={'/assets/icons/email.svg'} alt="whatsapp-icons" fill/>
+                        <Image src={'/assets/icons/email.svg'} alt="whatsapp-icons" fill sizes='100vw'/>
                     </div>
                     hello@maticket.com
                 </a>
                 <a href="/" className='flex items-center'>
                     <div className='w-8 h-8 relative mr-2'>
-                        <Image src={'/assets/icons/map.svg'} alt="whatsapp-icons" fill/>
+                        <Image src={'/assets/icons/map.svg'} alt="whatsapp-icons" fill sizes='100vw'/>
                     </div>
                     A Tower No. 88
                 </a>
@@ -49,17 +49,17 @@ export default function Footer() {
                 <div className="mt-1 flex space-x-4">
                     <a href="/">
                         <div className='relative w-10 h-10'>
-                            <Image src="/assets/icons/instagram.png" fill alt='instagram'/>
+                            <Image src="/assets/icons/instagram.png" fill alt='instagram' sizes='100vw'/>
                         </div>
                     </a>
                     <a href="/">
                         <div className='relative w-10 h-10'>
-                            <Image src="/assets/icons/youtube.png" fill alt='youtube'/>
+                            <Image src="/assets/icons/youtube.png" fill alt='youtube' sizes='100vw'/>
                         </div>
                     </a>
                     <a href="/">
                         <div className='relative w-10 h-10'>
-                            <Image src="/assets/icons/tiktok.png" fill alt='tiktok'/>
+                            <Image src="/assets/icons/tiktok.png" fill alt='tiktok' sizes='100vw'/>
                         </div>
                     </a>
                 </div>

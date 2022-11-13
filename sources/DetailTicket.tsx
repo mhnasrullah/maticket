@@ -35,17 +35,14 @@ export default function DetailTicket() {
               <Logo/>
             </Link>
         </div>
-        <Nav/>
+        <Nav
+        dataEvent={AllEvent}/>
         <Box className='mt-16'>
           <BreadCrumb
             list={[
               {
                 name : 'All Event',
-                href : '/'
-              },
-              {
-                name : 'Ticket',
-                href : '/'
+                href : '/allEvent'
               },
               {
                 name : title

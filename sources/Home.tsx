@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React, { useContext } from 'react'
-import { Box } from '../components/Box'
 import { HeaderInfo } from '../components/Info'
 import Logo from '../components/Logo'
 import Faq from '../sections/Faq'
@@ -25,7 +24,7 @@ export default function Home() {
               <Logo/>
             </Link>
         </div>
-        <Nav />
+        <Nav dataEvent={event}/>
         <Jumbotron/>
         <GenreJumbo/>
         <SponsoredConcert
@@ -33,7 +32,8 @@ export default function Home() {
         center
         blackText='Sponsored'
         blueText='Concert'/>
-        <RecentlyConcert/>
+        <RecentlyConcert
+        data={event}/>
         <Faq/>
         <Subscribe/>
         <Footer/>

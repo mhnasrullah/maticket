@@ -14,13 +14,18 @@ interface ArtistProps{
         verified : boolean,
         country : string,
         website : string,
-        genre : string
-    }
+        genre : string,
+        instagram : string,
+        twitter : string,
+        facebook : string
+    },
+    sectionChange : (e : activeSection)=>void
 }
 
 export const ArtistJumbo = (
     {
-        data :{banner,name,image,verified,country,website,genre},
+        data :{banner,name,image,verified,country,website,genre,instagram,twitter,facebook},
+        sectionChange
     } : ArtistProps) => {
 
 
@@ -30,12 +35,12 @@ export const ArtistJumbo = (
         <div className='bg-white'>
             <div className='relative w-full h-56 md:h-64'>
                 {banner && (
-                    <Image src={banner} alt={name} fill className='object-cover object-center'/>
+                    <Image src={banner} alt={name} fill sizes='100vw' className='object-cover object-center'/>
                 )}
             </div>
-            <div className='-mt-12 md:-mt-16 lg:-mt-24 px-4 md:px-8 lg:px-16 border-[1px] border-[gray] rounded-sm'>
+            <div className='-mt-12 md:-mt-16 lg:-mt-24 px-4 md:px-8 lg:px-16 border-[1px] border-t-0 border-[gray] rounded-sm'>
                 <div className='relative w-24 md:w-32 md:h-32 lg:w-48 lg:h-48 h-24 rounded-full border-4 lg:border-8 border-white'>
-                    <Image src={image} fill alt={name} className="object-cover object-center rounded-full"/>
+                    <Image src={image} fill sizes='100vw' alt={name} className="object-cover object-center rounded-full"/>
                 </div>
                 <div>
                     <div className='flex justify-between items-center mt-2 lg:mt-4'>
@@ -43,12 +48,12 @@ export const ArtistJumbo = (
                             <h1 className='text-blue font-medium text-lg lg:text-2xl'>{name}</h1>
                             {verified && (
                                 <div className='w-3 h-3 lg:w-6 lg:h-6 relative'>
-                                    <Image src={"/assets/icons/verified.svg"} alt={"verified"} fill/>
+                                    <Image src={"/assets/icons/verified.svg"} alt={"verified"} fill sizes='100vw'/>
                                 </div>
                             )}
                         </div>
                         <button className='relative w-6 h-6  hidden lg:block'>
-                            <Image src={"/assets/icons/share.svg"} fill alt='share'/>
+                            <Image src={"/assets/icons/share.svg"} fill sizes='100vw' alt='share'/>
                         </button>
                     </div>
                     <div className='flex flex-col lg:flex-row lg:items-center lg:mt-4 lg:space-x-16'>
@@ -56,29 +61,29 @@ export const ArtistJumbo = (
                             <p className='text-sm md:text-base'>{country}</p>
                         </div>
                         <div className='mt-4 lg:mt-0 flex space-x-3 lg:space-x-6 items-center'>
-                            <a href="/" >
+                            <a href={instagram} target={'_blank'} rel={"noopener noreferrer"}>
                                 <div className='relative w-8'>
                                     <Image src={"/assets/icons/instagramout.svg"} width={50} height={50} alt="instagram"/>
                                 </div>
                             </a>
-                            <a href="/" >
+                            <a href={facebook} target={'_blank'} rel={"noopener noreferrer"}>
                                 <div className='relative w-8'>
                                     <Image src={"/assets/icons/facebookout.svg"} width={50} height={50} alt="facebook"/>
                                 </div>
                             </a>
-                            <a href="/" >
+                            <a href={twitter} target={'_blank'} rel={"noopener noreferrer"}>
                                 <div className='relative w-8'>
                                     <Image src={"/assets/icons/twitterout.svg"} width={50} height={50} alt="twitter"/>
                                 </div>
                             </a>
                             <button className='relative w-5 h-5 lg:hidden'>
-                                <Image src={"/assets/icons/share.svg"} fill alt='share'/>
+                                <Image src={"/assets/icons/share.svg"} fill alt='share' sizes='100vw'/>
                             </button>
                         </div>
                     </div>
                     <div className='flex space-x-2 mt-4 lg:mt-6 lg:space-x-16'>
                         <p className='text-xs lg:text-base'>Joined : 01-01-2022</p>
-                        <p className='text-xs lg:text-base'>{website}</p>
+                        <a href={website} target={'_blank'} rel={"noopener noreferrer"} className='text-xs lg:text-base'>{website}</a>
                     </div>
                 </div>
                 <div className='mt-6 lg:mt-12'>
@@ -116,16 +121,19 @@ export const ArtistJumbo = (
                 <div className='mt-6 lg:mt-10'>
                     <button
                     onClick={()=>{
+                        sectionChange(activeSection.bio)
                         setActived(activeSection.bio)
                     }}
                     className={`py-2 px-4 border-b-2 ${activedSection === activeSection.bio ? "border-b-blue text-blue" : "border-b-trans"}`}>Bio</button>
                     <button
                     onClick={()=>{
+                        sectionChange(activeSection.allTicket)
                         setActived(activeSection.allTicket)
                     }}
                     className={`py-2 px-4 border-b-2 ${activedSection === activeSection.allTicket ? "border-b-blue text-blue" : "border-b-trans"}`}>All Tickets</button>
                     <button
                     onClick={()=>{
+                        sectionChange(activeSection.post)
                         setActived(activeSection.post)
                     }}
                     className={`py-2 px-4 border-b-2 ${activedSection === activeSection.post ? "border-b-blue text-blue" : "border-b-trans"}`}>Posts</button>
@@ -152,6 +160,7 @@ export default function Jumbotron() {
                     <Button
                     style='primary'
                     type='link'
+                    href='/allEvent'
                     >Explore All Concerts</Button>
                 </div>
             </div>

@@ -14,7 +14,6 @@ export default function MoreFromArtist() {
     const [hover,setHover] = useState<HoverSetSwiper>(HoverSetSwiper.none)
 
     const {AllEvent,line_up_artist} = useContext(context)
-    console.log(AllEvent,"all event")
   return (
     <Box>
         <Text

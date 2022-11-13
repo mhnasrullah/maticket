@@ -4,10 +4,16 @@ import { DropdownNav } from '../components/Dropdown'
 import Image from 'next/image'
 import Input from '../components/Input'
 import Link from 'next/link'
+import { searchEvent } from '../utils/func'
 
-export default function Nav() {
+interface Props {
+  dataEvent : any[]
+}
 
-  const [show,setShow] = useState(false)
+export default function Nav({dataEvent} : Props) {
+
+  const [show,setShow] = useState(false);
+  const [search,setSearch] = useState('');
 
   return (
     <Box className='relative bg-white shadow-xl'>
@@ -26,14 +32,31 @@ export default function Nav() {
         </div>
 
         {/* SEARCH */}
-        <div className='hidden md:block min-w-fit w-1/2'>
+        <div className='hidden md:block min-w-fit w-1/2 relative'>
           <Input
+          value={search}
+          onChange={(e)=>setSearch(e.target.value)}
           widthStyle='min-w-[400px] w-full'
           type={"text"}
           outline
           placeholder='find events here...'
           buttonType='icons'
           buttonContent='/assets/icons/searchIcons.svg'/>
+
+          {search && (
+            <div className='absolute w-full p-5 top-12 bg-white border-2 border-gray rounded-lg flex flex-col space-y-2 z-50'>
+              {searchEvent(dataEvent,search).map((e,i)=>(
+                <Link href={`/ticket/${e.id}`} key={i}>
+                  <div className='flex space-x-2 items-center'>
+                    <div className="relative w-10 h-10">
+                      <Image src={e.image} alt={e.title} fill className='rounded-full object-cover object-center' sizes='100vw'/>
+                    </div>
+                    <p>{e.title}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* RIGHT */}
