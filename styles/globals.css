@@ -5,3 +5,24 @@
 .swiper-button-disabled{
     opacity: 0;
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #FFFFFF00; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    width: 2px !important;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f1f1f1;
+    width: 2px !important;
+  }

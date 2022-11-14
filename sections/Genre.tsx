@@ -13,7 +13,7 @@ export const GenreJumbo = () => {
                 blackText='Concerts by'
                 blueText='Genre'
                 type='primary'/>
-                <div className='flex space-x-4 overflow-x-scroll md:h-fit lg:pb-2'>
+                <div className='flex space-x-4 overflow-x-scroll md:h-fit lg:pb-2 md:-mb-4'>
                     {data.map((e,i)=>(
                         <Button
                         key = {i}
