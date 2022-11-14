@@ -39,7 +39,7 @@ export default function ListTicketArtist() {
             <Dropdown
             onChange = {(e)=>setActiveType(e)}
             name='Type'
-            options={types}/>
+            options={['All Concert',...types]}/>
             <Dropdown
             name='Price'
             options={["option1","option2","option3"]}/>
@@ -49,7 +49,7 @@ export default function ListTicketArtist() {
         </div>
         <div className='mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-x-6 lg:gap-y-4'>
             {getAllEventByArtist(allEvent,id).filter((e)=>{
-              if(activeType != null){
+              if(activeType != null && activeType != 'All Concert'){
                 return e.category.toLowerCase() == activeType.toLowerCase()
               }else{
                 return e
