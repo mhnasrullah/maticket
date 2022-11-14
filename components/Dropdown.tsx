@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import {DropLangType} from '../utils/type'
 
 interface Props{
     options : string[],
-    name : string
+    name : string,
+    onChange? : (e:string) => void
 }
 
-export default function Dropdown({options,name} : Props) {
+export default function Dropdown({options,name,onChange} : Props) {
 
     const [value,setValue] = useState<string | null>(null);
     const [show,setShow] = useState<boolean>(false)
@@ -21,12 +22,16 @@ export default function Dropdown({options,name} : Props) {
                 <Image src={'/assets/icons/arrdown.svg'} sizes='100vw' fill alt='arrow'/>
             </div>
         </button>
-        <div className={`absolute top-12 py-3 bg-l-gray flex-col space-y-2 rounded-sm w-full border-[1px] border-[gray] z-40 ${show ? 'flex' : 'hidden'}`}>
+        <div className={`absolute top-12 py-3 bg-l-gray flex-col space-y-3 rounded-sm w-full border-[1px] border-[gray] z-40 ${show ? 'flex' : 'hidden'}`}>
             {options.map((e,i) => (
                 <button
                 key={i}
-                className='text-sm lg:text-base'
-                onClick={()=>setValue(e)}
+                className='text-sm lg:text-base hover:bg-white'
+                onClick={()=>{
+                    if(onChange){
+                        onChange(e)
+                    }
+                    setValue(e)}}
                 >{e}</button>
             ))}
         </div>
@@ -90,13 +95,20 @@ export const DropdownNav = ({active,options} : NavDropdown) => {
 }
 
 interface OutlineProps{
-    active? : string
+    active? : string,
+    onChange : (e : number) => void,
     options : string[]
 }
-export const DropdownOutline = ({active,options} : OutlineProps) => {
+export const DropdownOutline = ({active,options,onChange} : OutlineProps) => {
     
-    const [value,setValue] = useState(active ? active : options[0])
+    const [value,setValue] = useState<number | string | null>(null);
     const [show,setShow] = useState(false);
+
+    useEffect(()=>{
+        if(!value){
+            setValue(active ? active : 0)
+        }
+    })
 
     return (
         <div className='relative text-sm w-fit'>
@@ -104,7 +116,7 @@ export const DropdownOutline = ({active,options} : OutlineProps) => {
             onClick={()=>{
                 setShow(!show)}}
             className='py-2 px-2 border-blue border-2 w-fit rounded-lg flex items-center space-x-6 bg-white'>
-                <p className='font-medium min-w-[100px] lg:min-w-[180px] text-start'>{value}</p>
+                <p className='font-medium min-w-[100px] lg:min-w-[180px] text-start'>{typeof value == 'number' && options[value]}</p>
                 <div className='relative min-w-[12px] w-3'>
                     <Image src={'/assets/icons/arrdown.svg'} width={30} height={30} alt="arrow down"/>
                 </div>
@@ -114,7 +126,8 @@ export const DropdownOutline = ({active,options} : OutlineProps) => {
                 {options.map((e,i)=>(
                     <button
                     onClick={()=>{
-                        setValue(e)}}
+                        onChange(i)
+                        setValue(i)}}
                     key={i} className="w-full py-1 hover:bg-l-gray rounded-lg">
                         <p className="font-medium">{e}</p>
                     </button>

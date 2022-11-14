@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from './Button'
 import Counter from './Counter'
 import { DropdownOutline } from './Dropdown'
@@ -8,17 +8,37 @@ import { strToArray } from '../utils/func'
 
 export default function OrderTicketInfo() {
 
-    const {price} = useContext(context);
+    const {price,packages} = useContext(context);
+    const [pack,setPack] = useState<string[] | null>(null);
+    const [packSelect,setPackSelect] = useState(0);
+
+    const mappingPack = () => {
+        let dataPack : string[] = [];
+        strToArray(packages).map((e)=>{
+            dataPack = [
+                ...dataPack,
+                e.slice(1,-1)
+            ]
+        })
+
+        setPack(dataPack)
+    }
+
+    useEffect(()=>{
+        mappingPack()
+    },[])
+
   return (
     <div className='py-6 lg:flex lg:space-x-16'>
         <div className='flex flex-col items-center lg:items-start md:h-full lg:space-y-7'>
             <DropdownOutline
-            options={['CAT 1','CAD 2','CAY 3']}/>
+            onChange = {(e)=>setPackSelect(e)}
+            options={pack == null ? [] : pack}/>
             <Counter
             className='mt-2 md:mt-4'/>
         </div>
         <div className='flex flex-col items-center mt-4 lg:mt-0 lg:space-y-6'>
-            <h1 className='text-xl font-semibold text-blue lg:text-2xl'>{strToArray(price)[0].slice(1,-1)},00 MATIC</h1>
+            <h1 className='text-xl font-semibold text-blue lg:text-2xl'>{strToArray(price)[packSelect].slice(1,-1)},00 MATIC</h1>
             <Button
             className='flex w-fit mt-4'
             classTextColor='text-white'
