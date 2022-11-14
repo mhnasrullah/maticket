@@ -9,8 +9,6 @@ interface Props{
 }
 
 export default function Dropdown({options,name,onChange} : Props) {
-    console.log(options)
-
     const [value,setValue] = useState<string | null>(null);
     const [show,setShow] = useState<boolean>(false)
   return (
